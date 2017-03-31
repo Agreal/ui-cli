@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA,KACE,eAAiB,CAClB,GAGC,QAAU,CACX","file":"main.css","sourcesContent":["body {\n  background: #fff;\n}\n\nh1 {\n  margin: 0;\n}\n"]}

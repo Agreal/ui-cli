@@ -1,0 +1,13 @@
+{
+  "directories": {
+    "root": ".",
+    "sass": "scss",
+    "style": "style"
+  },
+  "_sass": {
+    "main": "main"
+  },
+  "dist": {
+    "sass": "style"
+  }
+}
