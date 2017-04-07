@@ -1,15 +1,17 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
+const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
 const BrowserSync = require('browser-sync');
+const cssnano = require('cssnano');
 
 const browserSync = BrowserSync.create();
 
 const dirs = {
   root: '.',
   sass: './scss',
-  style: './style'
+  style: './style',
+  script: './script'
 };
 
 const sassPaths = {
@@ -20,11 +22,10 @@ const sassPaths = {
 gulp.task('styles', () => {
   return gulp.src(sassPaths.app)
     .pipe(sourcemaps.init())
-    .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(autoprefixer({browsers: ['last 2 versions']}))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([require('autoprefixer'), cssnano()]))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(sassPaths.dest))
-    .pipe(browserSync.stream());;
+    .pipe(gulp.dest(sassPaths.dest));
 });
 
 
@@ -35,7 +36,11 @@ gulp.task('serve', ['styles'], () => {
   });
 
   gulp.watch(`${dirs.sass}/**/*.scss`, ['styles']);
-  gulp.watch(`${dirs.root}/*.html`).on('change', browserSync.reload);
+  gulp.watch([
+    `${dirs.root}/*.html`,
+    `${dirs.style}/**/*.css`,
+    `${dirs.script}/**/*.js`
+  ]).on('change', browserSync.reload);
 });
 
 //Watch task
