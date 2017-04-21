@@ -1,10 +1,14 @@
+const path = require('path');
+const fse = require('fs-extra');
+const chalk = require('chalk');
+
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
-const BrowserSync = require('browser-sync');
 const cssnano = require('cssnano');
 
+const BrowserSync = require('browser-sync');
 const browserSync = BrowserSync.create();
 
 const dirs = {
@@ -41,6 +45,14 @@ gulp.task('serve', ['styles'], () => {
     `${dirs.style}/**/*.css`,
     `${dirs.script}/**/*.js`
   ]).on('change', browserSync.reload);
+});
+
+gulp.task('create', (done) => {
+  const projectName = process.argv[3] || 'ui-boilerplate';
+  const boilerplatePath = path.join(__dirname, '../boilerplate');
+  fse.copySync(boilerplatePath, projectName);
+  console.log(chalk.green(`${projectName} has been created.`));
+  done();
 });
 
 //Watch task

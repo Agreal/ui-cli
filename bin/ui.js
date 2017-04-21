@@ -6,7 +6,7 @@ var path = require('path');
 
 var command = process.argv[2] || 'help';
 
-if (!/^(serve)$/.test(command)) {
+if (!/^(create|serve)$/.test(command)) {
     console.log('命令错误');
     process.exit(-1);
 }
