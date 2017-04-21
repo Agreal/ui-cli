@@ -51,7 +51,8 @@ gulp.task('create', (done) => {
   const projectName = process.argv[3] || 'ui-boilerplate';
   const boilerplatePath = path.join(__dirname, '../boilerplate');
   fse.copySync(boilerplatePath, projectName);
-  console.log(chalk.green(`${projectName} has been created.`));
+  console.log(chalk.green(`${projectName}`), 'has been created.');
+  console.log('Go into', chalk.green(`${projectName}`), 'and run', chalk.green('ui serve'), 'to preview page.');
   done();
 });
 
