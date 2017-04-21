@@ -11,12 +11,6 @@ if (!/^(create|serve)$/.test(command)) {
     process.exit(-1);
 }
 
-var packageFile = 'package.json';
-if (!fs.existsSync(packageFile)) {
-  console.log('没有配置文件');
-  process.exit(-1);
-}
-
 require('./gulpfile');
 
 gulp.start(command);
