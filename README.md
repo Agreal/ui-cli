@@ -5,5 +5,4 @@
 
 ### Next
 * add `ui help` command
-* publish to NPM
 * support `less`
