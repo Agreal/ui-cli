@@ -19,7 +19,7 @@ const dirs = {
 };
 
 const sassPaths = {
-  app: `${dirs.sass}/main.scss`,
+  app: `${dirs.sass}/**/*.scss`,
   dest: `${dirs.style}`
 };
 
