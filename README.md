@@ -1,3 +1,6 @@
+# ui-cli(deprecated)
+Use [Parcel](https://parceljs.org/) instead.
+
 ## Usage
 1. `npm install ui-cli -g`
 1. run `ui create <project>` to create a project
